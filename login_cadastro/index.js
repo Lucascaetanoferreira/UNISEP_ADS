@@ -3,35 +3,24 @@ import express, { response } from "express";
 const app = express();
 app.use(express.json()); //configura\\
 
+app.use(express.json());
+
 const usuarios =[];
 
 
-app.get("/", (request,respose)=>{
-
-    const usuarios =usuarios.filter ((i)=> i.nome === nome);
-
-    return respose.send(usuarios);
-
-});
 app.post("/cadastro", (request,response)=>{//permite que envie um corpo//
+    const {nome,usuario, senha} =request.body;
 
-    console.log(request);
+    usuario.push({nome, usuario, senha});
 
-    const nome = request.body.nome;
-    const telefone = request.body.telefone;
-
-    usuarios.push({//objeto\\
-        id: coutID++,
-        nome,
-        telefone
-    })
-
-    return response.send ({nome,telefone});
+    return response.send ({msg:"login realizado com sucesso"});
 
 })
 
 app.post("/login", (request,response)=>{
     const {usuario, senha } = request.body
+
+
 
     if (!usuario || !senha){
 
@@ -41,9 +30,9 @@ app.post("/login", (request,response)=>{
     const existe =  usuario.find(u => usuarios === usuario && u.senha ===senha);
 
     if (existe) {
-        return res.json({ msg: "Login realizado com sucesso!" });
+        return response.send({ msg: "Login realizado com sucesso!" });
       } else {
-        return res.status(401).json({ msg: "Usuário ou senha inválidos!" });
+        return response.send({ msg: "Usuário ou senha inválidos!" });
       }
 
 });
