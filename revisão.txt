@@ -1,0 +1,20 @@
+oque tem que lenbrer oque cada um é importante
+aplicativo
+ hibrido,
+ nativo,
+ web app
+
+
+
+http
+
+jshon meio de comunicação é um arquivo de comunicação
+web service
+json usa dentro do protocolo http
+objeto json= tranforma em uma forma padrão de o
+
+
+get -buscar
+post-entregar enviar
+put- atualizar
+delet - excluir

@@ -1,0 +1,26 @@
+{
+  "name": "unisep_ads",
+  "version": "1.0.0",
+  "description": "Disciplina de desenvolvimento Mobile do curso ADS analise e desenvolvimento de sistema no 4 semestre, turma  2025",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch index.js"
+  },
+  "repository": {
+    "type": "module",
+    "url": "git+https://github.com/Lucascaetanoferreira/UNISEP_ADS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lucascaetanoferreira/UNISEP_ADS/issues"
+  },
+  "homepage": "https://github.com/Lucascaetanoferreira/UNISEP_ADS#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "knex": "^3.1.0",
+    "mysql": "^2.18.1"
+  }
+}
