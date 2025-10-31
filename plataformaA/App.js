@@ -1,53 +1,75 @@
 
-import { StyleSheet, Text, View, View, Image, TextInput, TouchableOpacity, View} from 'react-native';
-import { TextInput } from 'react-native/types_generated/index';
-import logo from "./assent/logo.png"
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import logo from "./assets/logo.png";
+import { use, useState } from 'react';
 
 export default function App() {
+  const [usuario, setUsuario] = useState();
+  const [password, setPassword]= useState();
+  const [errorMessage, setErrorMessage] = useState();  
+  
+
+  const validate = ()=>{
+    if(usuario.length<11){
+      setErrorMessage('usuario invalido:');
+    }else if (String(password).length <6){
+      setErrorMessage('senha invalida');
+    }else{
+      alert('sucesso','login realizado com sucesso!')
+    }
+  }
+  const handlerUser= (values) =>{
+    setUsuario(values);
+    setErrorMessage('')
+    
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-         <Image
-           source={logo}
-           style={styles.logo}
-         />
-         <Text style={styles.texto}>Seja bem vindo</Text>
+        <Image
+          source={logo}
+          style={styles.logo}
+        />
+        <Text style={styles.texto}>Seja bem vindo</Text>
 
-         <TextInput
+         <text style={styles.erro}>informe o Usuario</text>
 
-         placeholder='Usuario'
-         keyboardType='numeric'
-         placeholderTextColor="#9aa0a6"
-         style={styles.input}
+        {String(errorMessage).length > 0 ?<text style={styles.usuario}>{errorMessage}</text>:null}
+        <TextInput
 
+          placeholder='Usuario'
+          keyboardType='numeric'
+          placeholderTextColor="#9aa0a6"
+          style={styles.input}
+          onChange={setUsuario}
+ 
+        />
 
-         />
+        <TextInput
+          placeholder='senha'
+          secureTextEntry
+          placeholderTextColor="#9aa0a6"
+          style={styles.input}
+        />
 
-         <TextInput
-
-         placeholder='senha'
-         secureTextEntry
-         placeholderTextColor="#9aa0a6"
-         style={styles.input}
-         />
-
-         <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button}>
           <text style={styles.buttonText}>Entrar</text>
-         </TouchableOpacity>
+        </TouchableOpacity>
 
-         <View>
+        <View>
 
-      <TouchableOpacity style={styles.rowBetwenn}>
-        <Text style={styles.link}>esqueci o Usuario</Text>
-      </TouchableOpacity>
-         <Text style={styles.dividirText}>ou</Text>
-      <TouchableOpacity>
-         <Text  style={styles.link}>esqueci minha senha</Text>
-      </TouchableOpacity>
+          <TouchableOpacity style={styles.rowBetwenn}>
+            <Text style={styles.link}>esqueci o Usuario</Text>
+          </TouchableOpacity>
+          <Text style={styles.dividirText}>ou</Text>
+          <TouchableOpacity>
+            <Text style={styles.link}>esqueci minha senha</Text>
+          </TouchableOpacity>
 
-         </View>
+        </View>
       </View>
-      
+
     </View>
   );
 }
@@ -57,73 +79,79 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f4f6f8',
     justifyContent: 'center',
-    alignItems:'center',
-    padding:20
-    
+    alignItems: 'center',
+    padding: 20
+
   },
-  card:{
+  card: {
     width: '100',
     maxWidth: 420,
     backgroundColor: '#fff',
     borderRadius: 14,
     padding: 24,
     shadowColor: '#000',
-    shadowOpacity:0.06,
+    shadowOpacity: 0.06,
     shadowRadius: 10,
-    elevation:6
+    elevation: 6
   },
-   logo:{
-    width:210,
-    height:80,
-    alignSelf:'center'
+  logo: {
+    width: 210,
+    height: 80,
+    alignSelf: 'center'
   },
-   texto:{
+  texto: {
     fontSize: 15,
     color: '#6b7280',
     fontWeight: '600',
     marginTop: 12,
     marginBottom: 10,
     textAlign: 'center'
-    
 
-    },
-   input:{
-    height:46,
+
+  },
+  input: {
+    height: 46,
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 12,
     marginBottom: 10,
     fontSize: 15
-   },
-   button:{
-    height:46,
-    backgroundColor:'#2c3b48',
+  },
+  button: {
+    height: 46,
+    backgroundColor: '#2c3b48',
     bordertRadius: 10,
-    justifyContent:'center',
-    alignItems:'center',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 6
 
-   },
-   buttonText:{
-    color:'#fff',
-    fontWeight:'600',
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: '600',
 
-   },
-   rowBetwenn:{
-    flexDirection:'row',
-    justifyContent:'center',
-
-
-   },
-   link:{
-    color: '#c003c',
-    fontSize:14,
+  },
+  rowBetwenn: {
+    flexDirection: 'row',
+    justifyContent: 'center',
 
 
-   },
-   dividirText:{
-    marginHorizontal:10,
-     color:'#9aa0a6'
+  },
+  link: {
+    color: '#c8003c',
+    fontSize: 14,
+
+
+  },
+  dividirText: {
+    marginHorizontal: 10,
+    color: '#9aa0a6'
+  },
+  erro:{
+    color: '#c8003c',
+    textAlign: 'center',
+    marginBottom:8 
    }
+
 
 });
