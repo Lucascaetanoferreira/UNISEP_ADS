@@ -1,24 +1,29 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
-import login from "./screens/login";
+import perfil from "./screens/login";
+import { View } from "react-native";
+
 
 const Stack = createNativeStackNavigator();
 
-export default function App(){
+export default function perfil(){
   return(
+     <View>
+        <text>ola perfil</text>
     <NavigationContainer>
 
-      <Stack.Navigator initialRouteName="login">
+      <Stack.Navigator initialRouteName="perfil">
 
         <Stack.Screen
-          name="login" 
-          component={login}
+          name="perfil" 
+          component={perfil}
           options={{headerShown:false}}       
         />
 
       </Stack.Navigator>
 
     </NavigationContainer>
+    </View>
   )
 }
